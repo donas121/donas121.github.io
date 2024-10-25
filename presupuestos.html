@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Presupuesto de Repostería</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e6f2ff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .card {
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            width: 100%;
+            max-width: 600px;
+        }
+        .card-header {
+            background-color: #4da6ff;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        .card-header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+        .card-body {
+            padding: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #e6f2ff;
+        }
+        th {
+            background-color: #b3d9ff;
+            font-weight: bold;
+        }
+        tr:hover {
+            background-color: #f0f8ff;
+        }
+        .total-row {
+            font-weight: bold;
+            background-color: #b3d9ff;
+        }
+        .total-row td {
+            border-bottom: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="card-header">
+            <h1>Presupuesto de Repostería</h1>
+        </div>
+        <div class="card-body">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Producto</th>
+                        <th>Cantidad</th>
+                        <th>Precio Unitario</th>
+                        <th>Subtotal</th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody">
+                    <!-- Las filas se llenarán con JavaScript -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        const productos = [
+            { nombre: "Donas", cantidad: 15, precio: 1500 },
+            { nombre: "Chispas de colores (1kg)", cantidad: 2, precio: 3500 },
+            { nombre: "Chips de chocolate (1kg)", cantidad: 2, precio: 3500 },
+            { nombre: "Maní (1kg)", cantidad: 2, precio: 4000 },
+            { nombre: "Salsa de vainilla", cantidad: 1, precio: 6000 },
+            { nombre: "Salsa de chocolate", cantidad: 1, precio: 6000 }
+        ];
+
+        function llenarTabla() {
+            const tableBody = document.getElementById('tableBody');
+            let total = 0;
+
+            productos.forEach(producto => {
+                const subtotal = producto.cantidad * producto.precio;
+                total += subtotal;
+
+                const row = `
+                    <tr>
+                        <td>${producto.nombre}</td>
+                        <td>${producto.cantidad}</td>
+                        <td>$${producto.precio.toLocaleString()}</td>
+                        <td>$${subtotal.toLocaleString()}</td>
+                    </tr>
+                `;
+                tableBody.innerHTML += row;
+            });
+
+            const totalRow = `
+                <tr class="total-row">
+                    <td colspan="3">Total:</td>
+                    <td>$${total.toLocaleString()}</td>
+                </tr>
+            `;
+            tableBody.innerHTML += totalRow;
+        }
+
+        window.onload = llenarTabla;
+    </script>
+</body>
+</html>
