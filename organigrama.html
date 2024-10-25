@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Organigrama Empresarial</title>
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2980b9;
+            --background-color: #ecf0f1;
+            --text-color: #2c3e50;
+            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            margin: 0;
+            padding: 20px;
+            background-color: var(--background-color);
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .org-chart {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+        .level {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 30px;
+            width: 100%;
+        }
+        .box {
+            background-color: #fff;
+            border: 2px solid var(--primary-color);
+            border-radius: 10px;
+            padding: 15px;
+            margin: 10px;
+            text-align: center;
+            min-width: 200px;
+            box-shadow: var(--box-shadow);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background-color: var(--primary-color);
+        }
+        .box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+        .box h3 {
+            margin: 0 0 10px;
+            color: var(--primary-color);
+            font-size: 1.2em;
+        }
+        .box p {
+            margin: 5px 0 0;
+            font-size: 0.9em;
+        }
+        .sub-level {
+            display: none;
+            flex-wrap: wrap;
+            justify-content: center;
+            width: 100%;
+            margin-top: 20px;
+        }
+        .visible {
+            display: flex;
+            animation: fadeIn 0.5s ease-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .toggle-btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            margin-top: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 0.9em;
+            transition: background-color 0.3s ease;
+        }
+        .toggle-btn:hover {
+            background-color: var(--secondary-color);
+        }
+        .line {
+            width: 2px;
+            height: 30px;
+            background-color: var(--primary-color);
+            margin: 0 auto;
+        }
+        .department {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0 20px;
+        }
+        .info-section {
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 40px;
+            box-shadow: var(--box-shadow);
+        }
+        .info-section h2 {
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        .info-section h3 {
+            color: var(--secondary-color);
+            margin-top: 20px;
+        }
+        @media (max-width: 768px) {
+            .level {
+                flex-direction: column;
+                align-items: center;
+            }
+            .department {
+                margin: 20px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="org-chart">
+            <div class="level">
+                <div class="box">
+                    <h3>Presidencia</h3>
+                    <p>Miguel Mendez</p>
+                </div>
+            </div>
+            <div class="line"></div>
+            <div class="level">
+                <div class="department">
+                    <div class="box">
+                        <h3>Departamento Administrativo</h3>
+                        <button class="toggle-btn" onclick="toggleSubLevel(this)">Ver más</button>
+                    </div>
+                    <div class="sub-level">
+                        <div class="box">
+                            <h3>Compras</h3>
+                            <p>Sara Peña</p>
+                        </div>
+                        <div class="box">
+                            <h3>Inventario</h3>
+                            <p>Inés Galeano</p>
+                        </div>
+                        <div class="box">
+                            <h3>Administración de Recursos</h3>
+                            <p>Johan Gómez</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="department">
+                    <div class="box">
+                        <h3>Departamento Financiero</h3>
+                        <button class="toggle-btn" onclick="toggleSubLevel(this)">Ver más</button>
+                    </div>
+                    <div class="sub-level">
+                        <div class="box">
+                            <h3>Contabilidad</h3>
+                            <p>Camilo Garzón</p>
+                        </div>
+                        <div class="box">
+                            <h3>Presupuesto</h3>
+                            <p>Gloria Restrepo</p>
+                        </div>
+                        <div class="box">
+                            <h3>Tesorería</h3>
+                            <p>Miguel Vera</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="department">
+                    <div class="box">
+                        <h3>Departamento Recursos Humanos</h3>
+                        <button class="toggle-btn" onclick="toggleSubLevel(this)">Ver más</button>
+                    </div>
+                    <div class="sub-level">
+                        <div class="box">
+                            <h3>Selección de Personal</h3>
+                            <p>Juliana Gómez</p>
+                        </div>
+                        <div class="box">
+                            <h3>Capacitación</h3>
+                            <p>Julián Acosta</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="department">
+                    <div class="box">
+                        <h3>Departamento de Marketing</h3>
+                        <button class="toggle-btn" onclick="toggleSubLevel(this)">Ver más</button>
+                    </div>
+                    <div class="sub-level">
+                        <div class="box">
+                            <h3>Publicidad</h3>
+                            <p>Sebastián López</p>
+                        </div>
+                        <div class="box">
+                            <h3>Ventas</h3>
+                            <p>Mariana Pérez</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="info-section">
+            <h2>Importancia de los Departamentos en una Empresa</h2>
+            <p>En una empresa, cada departamento desempeña un papel crucial en el funcionamiento y el éxito general de la organización.</p>
+
+            <h3>Departamento Financiero</h3>
+            <p>Este departamento es el corazón económico de la empresa. Se encarga de la planificación financiera, la gestión de presupuestos y el análisis de costos. Los profesionales que trabajan aquí, como contadores y analistas financieros, son esenciales para asegurar la salud financiera de la empresa, maximizando los recursos y minimizando riesgos. Su trabajo permite tomar decisiones informadas que impactan directamente en la rentabilidad.</p>
+
+            <h3>Departamento de Producción</h3>
+            <p>Los encargados de este departamento son vitales para transformar insumos en productos finales. Ingenieros, supervisores y operarios trabajan en conjunto para optimizar procesos, garantizar la calidad y cumplir con los plazos de entrega. Su labor no solo afecta la eficiencia, sino también la satisfacción del cliente, ya que un buen manejo de la producción asegura que los productos lleguen a tiempo y en las condiciones adecuadas.</p>
+
+            <h3>Recursos Humanos</h3>
+            <p>Este departamento se centra en el capital humano, el activo más importante de cualquier organización. Los profesionales de recursos humanos, como reclutadores y capacitadores, son responsables de atraer, retener y desarrollar talento. Promueven un ambiente de trabajo saludable y gestionan las relaciones laborales, lo que contribuye a un alto nivel de motivación y productividad entre los empleados.</p>
+
+            <h3>Marketing</h3>
+            <p>El departamento de marketing es la voz de la empresa en el mercado. Especialistas en comunicación, investigadores de mercado y diseñadores trabajan para crear estrategias que posicionen a la empresa y sus productos en la mente del consumidor. Su capacidad para entender las necesidades del mercado y comunicar el valor de los productos es fundamental para atraer y fidelizar clientes, impulsando así el crecimiento y la visibilidad de la marca.</p>
+
+            <p>Cada departamento, con sus respectivas funciones y profesionales, forma parte de un engranaje interconectado. La colaboración y la comunicación entre ellos son esenciales para el éxito integral de la empresa. Sin la sinergia de estos equipos, sería difícil alcanzar los objetivos propuestos y adaptarse a un entorno empresarial en constante cambio.</p>
+        </div>
+    </div>
+
+    <script>
+        function toggleSubLevel(button) {
+            const subLevel = button.parentElement.nextElementSibling;
+            subLevel.classList.toggle('visible');
+            button.textContent = subLevel.classList.contains('visible') ? 'Ver menos' : 'Ver más';
+            
+            // Smooth scroll to show full sub-level if it's now visible
+            if (subLevel.classList.contains('visible')) {
+                setTimeout(() => {
+                    subLevel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                }, 300);
+            }
+        }
+
+        // Add hover effect to boxes
+        document.querySelectorAll('.box').forEach(box => {
+            box.addEventListener('mouseenter', () => {
+                box.style.transform = 'scale(1.05)';
+            });
+            box.addEventListener('mouseleave', () => {
+                box.style.transform = 'scale(1)';
+            });
+        });
+    </script>
+</body>
+</html>
