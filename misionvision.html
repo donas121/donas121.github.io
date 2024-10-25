@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Misión, Visión e Innovación - Donuts</title>
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2980b9;
+            --background-color: #ecf0f1;
+            --text-color: #34495e;
+            --accent-color: #e74c3c;
+        }
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--background-color);
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-bottom: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        header::before, header::after {
+            content: '🍩';
+            font-size: 5rem;
+            position: absolute;
+            opacity: 0.2;
+        }
+        header::before {
+            top: -20px;
+            left: 20px;
+            transform: rotate(-30deg);
+        }
+        header::after {
+            bottom: -20px;
+            right: 20px;
+            transform: rotate(30deg);
+        }
+        h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        .content {
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+        }
+        h2 {
+            color: var(--secondary-color);
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 0.5rem;
+            margin-top: 0;
+        }
+        p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+        .icon {
+            font-size: 2.5rem;
+            margin-right: 0.5rem;
+            vertical-align: middle;
+        }
+        .decoration {
+            position: absolute;
+            font-size: 8rem;
+            opacity: 0.03;
+            z-index: 0;
+        }
+        .decoration-1 {
+            top: -20px;
+            right: -20px;
+            transform: rotate(30deg);
+        }
+        .decoration-2 {
+            bottom: -20px;
+            left: -20px;
+            transform: rotate(-30deg);
+        }
+        .decoration-3 {
+            top: 50%;
+            right: -20px;
+            transform: rotate(45deg);
+        }
+        @media (max-width: 600px) {
+            .container {
+                padding: 10px;
+            }
+            .content {
+                padding: 1.5rem;
+            }
+            h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Donuts - Endulzando tu vida</h1>
+    </header>
+    <div class="container">
+        <div class="content">
+            <span class="decoration decoration-1">🎯</span>
+            <h2><span class="icon">🎯</span>Misión</h2>
+            <p>Nuestra misión es endulzar la vida de nuestros clientes ofreciendo las donas más deliciosas y creativas. Nos esforzamos por crear experiencias únicas y memorables a través de sabores innovadores y una calidad excepcional.</p>
+        </div>
+        <div class="content">
+            <span class="decoration decoration-2">🚀</span>
+            <h2><span class="icon">🚀</span>Visión</h2>
+            <p>Queremos ser la marca líder y referente en el mercado de las donas, reconocida por nuestra innovación, calidad y compromiso con la satisfacción del cliente. Aspiramos a expandir nuestra presencia globalmente, manteniendo siempre la esencia artesanal y el amor por lo que hacemos.</p>
+        </div>
+        <div class="content">
+            <span class="decoration decoration-3">💡</span>
+            <h2><span class="icon">💡</span>Innovación del Producto</h2>
+            <p>Nuestro producto, por la complejidad de su elaboración casera, se basa en donas compradas sin coberturas ni añadidos. Nos encargamos de adquirirlas de un proveedor que maneja altos estándares de calidad e higiene en su elaboración, garantizando así un excelente producto para nuestros clientes.</p>
+            <p>Las donas se presentan en un recipiente cuadrado de plástico para postres. Este recipiente lleva una etiqueta pequeña pegada en la parte superior de la tapa con el nombre y el logo de la empresa, brindando mayor comodidad al consumidor.</p>
+            <p>Al momento de la venta, ofrecemos una experiencia personalizada:</p>
+            <ul>
+                <li>El cliente puede escoger dos toppings que se añadirán a la dona en el recipiente.</li>
+                <li>Las donas se acompañan de salsa de chocolate blanco o negro, según la preferencia del cliente.</li>
+                <li>Si el cliente lo desea, puede agregar más toppings por un valor adicional cada uno.</li>
+            </ul>
+            <p>Esta innovación nos permite ofrecer un producto fresco, personalizado y de alta calidad, manteniendo la eficiencia en nuestra operación y garantizando la satisfacción de nuestros clientes.</p>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const contents = document.querySelectorAll('.content');
+            contents.forEach((content, index) => {
+                content.style.opacity = '0';
+                content.style.transform = 'translateY(20px)';
+                content.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                setTimeout(() => {
+                    content.style.opacity = '1';
+                    content.style.transform = 'translateY(0)';
+                }, 300 * (index + 1));
+            });
+        });
+    </script>
+</body>
+</html>
